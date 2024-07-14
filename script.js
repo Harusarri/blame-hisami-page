@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
             payload.username = username;
         }
 
-        fetch('https://blamehisami.adaptable.app/api/click', {
+        fetch('https://blamebackend.onrender.com/api/click', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
