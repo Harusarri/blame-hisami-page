@@ -31,7 +31,7 @@ document.addEventListener("DOMContentLoaded", () => {
     getUserIp().then(ip => {
         userIp = ip;
 
-        fetch('https://blamebackend.onrender.com/api/leaderboard')
+        fetch('https://blamehisami.adaptable.app/api/leaderboard')
             .then(response => response.json())
             .then(data => {
                 leaderboardElement.innerHTML = '';
@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 // 데이터 정렬: 클릭 수에 따라 내림차순 정렬
                 const sortedData = Object.entries(data).sort((a, b) => b[1].clicks - a[1].clicks);
 
-                sortedData.forEach(([username, { ip, clicks }], index) => {
+                sortedData.forEach(([ip, { clicks, username }], index) => {
                     const maskedIp = maskIP(ip);
                     const displayName = username ? `${username}` : `${maskedIp}`;
                     const listItem = document.createElement('li');
@@ -82,7 +82,7 @@ function showEditNicknameModal(ip) {
 
 function saveNickname() {
     const newNickname = document.getElementById('nicknameInput').value;
-    fetch('https://blamebackend.onrender.com/api/changeNickname', {
+    fetch('https://blamehisami.adaptable.app/api/changeNickname', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
