@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let counter = localStorage.getItem('blameCounter') || 0;
     counterElement.textContent = counter;
 
+    // 다크 모드 설정
     let darkModeEnabled = localStorage.getItem('darkModeEnabled') === 'true';
     if (darkModeEnabled) {
         document.body.classList.add('dark-mode');
