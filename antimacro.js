@@ -1,6 +1,6 @@
 let clickCount = 0;
 let lastClickTime = 0;
-const MAX_CPS = 100; // 설정할 최대 CPS 값을 높입니다.
+const MAX_CPS = 200; // 모바일 환경에서 더 높은 CPS 값을 설정합니다.
 
 window.addEventListener('userClick', (event) => {
     const currentTime = Date.now();
@@ -15,12 +15,17 @@ window.addEventListener('userClick', (event) => {
     lastClickTime = currentTime;
     clickCount++;
 
+    // 클릭 데이터를 업데이트합니다.
+    updateClickData(event.detail);
+});
+
+function updateClickData(clickData) {
     fetch('https://blamebackend.onrender.com/api/click', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify(event.detail)
+        body: JSON.stringify(clickData)
     })
     .then(response => response.json())
     .then(data => {
@@ -29,4 +34,4 @@ window.addEventListener('userClick', (event) => {
     .catch(error => {
         console.error('Error sending click data to server:', error);
     });
-});
+}
