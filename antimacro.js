@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // 클릭 수 서버로 전송
-        fetch('http://localhost:3000/api/click', {
+        fetch('https://blamebackend.onrender.com/api/click', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
