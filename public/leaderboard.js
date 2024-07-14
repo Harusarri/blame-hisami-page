@@ -31,8 +31,13 @@ document.addEventListener("DOMContentLoaded", () => {
     getUserIp().then(ip => {
         userIp = ip;
 
-        fetch('https://blamehisami.adaptable.app/api/leaderboard')
-            .then(response => response.json())
+        fetch('https://blamebackend.onrender.com/api/leaderboard')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
                 leaderboardElement.innerHTML = '';
 
@@ -82,7 +87,7 @@ function showEditNicknameModal(ip) {
 
 function saveNickname() {
     const newNickname = document.getElementById('nicknameInput').value;
-    fetch('https://blamehisami.adaptable.app/api/changeNickname', {
+    fetch('https://blamebackend.onrender.com/api/changeNickname', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
