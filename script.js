@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let counter = localStorage.getItem('blameCounter') || 0;
     counterElement.textContent = counter;
 
-    // 다크 모드 설정
     let darkModeEnabled = localStorage.getItem('darkModeEnabled') === 'true';
     if (darkModeEnabled) {
         document.body.classList.add('dark-mode');
@@ -29,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     };
 
-    // 랜덤 이미지 로드
     const images = [
         './image/1.png',
         './image/2.png',
@@ -57,20 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
             payload.username = username;
         }
 
-        fetch('https://blamebackend.onrender.com/api/click', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(payload)
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Click data sent to server:', data);
-        })
-        .catch(error => {
-            console.error('Error sending click data to server:', error);
-        });
+        window.dispatchEvent(new CustomEvent('userClick', { detail: payload }));
     });
 
     resetButton.addEventListener('click', () => {
