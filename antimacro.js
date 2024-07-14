@@ -8,13 +8,14 @@ window.addEventListener('userClick', (event) => {
 
     if (timeDiff < 1000 / MAX_CPS) {
         console.warn('Possible autoclicker detected!');
-        return;
+        // 클릭을 무시하지 않고 경고만 출력합니다.
     }
 
     lastClickTime = currentTime;
     clickCount++;
     if (clickCount > MAX_CPS) {
         console.warn('Too many clicks per second!');
+        clickCount = 0; // 클릭 수 초기화
         return;
     }
 
