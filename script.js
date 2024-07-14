@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const userIp = await getIpAddress();
         if (!userIp) return;
 
-        const payload = { ip: userIp, clicks: 1 };
+        const payload = { ip: userIp, clicks: counter - 1 };
         if (username) {
             payload.username = username;
         }
