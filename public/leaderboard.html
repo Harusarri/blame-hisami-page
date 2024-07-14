@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="leaderboard-container">
+        <h1>Leaderboard</h1>
+        <ul id="leaderboard">
+            <!-- 순위 데이터가 여기에 추가될 예정 -->
+        </ul>
+        <button id="toggleDarkMode" class="button">Dark Mode</button>
+    </div>
+    <button id="editNameButton" class="button">Edit Name</button>
+    <div id="nicknameModalContent" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Enter your new nickname:</p>
+            <input type="text" id="nicknameInput">
+            <button onclick="saveNickname()" class="button">Save Nickname</button>
+        </div>
+    </div>
+
+    <script src="leaderboard.js"></script>
+</body>
+</html>
